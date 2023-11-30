@@ -20,7 +20,7 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
-        /// 根据PH值获取水质
+        /// 根据PH值获取类别
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -68,7 +68,7 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
-        /// 根据溶解氧值获取水质
+        /// 根据溶解氧值获取类别
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -122,7 +122,7 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
-        /// 根据高锰酸盐指数值获取水质
+        /// 根据高锰酸盐指数值获取类别
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -176,7 +176,7 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
-        /// 根据化学需氧量值获取水质
+        /// 根据化学需氧量值获取类别
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -229,7 +229,7 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
-        /// 根据五日生化需氧量值获取水质
+        /// 根据五日生化需氧量值获取类别
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -282,7 +282,7 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
-        /// 根据氨氮值获取水质
+        /// 根据氨氮值获取类别
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -358,7 +358,7 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
-        /// 根据总磷值获取水质
+        /// 根据总磷值获取类别
         /// </summary>
         /// <param name="value"></param>
         /// <param name="type"></param>
@@ -391,6 +391,8 @@ namespace Journey.EQSFSW.V2002
 
         #endregion
 
+        #region 总氮 TN
+
         /// <summary>
         /// 总氮标准限值
         /// </summary>
@@ -406,6 +408,44 @@ namespace Journey.EQSFSW.V2002
                 new StandardLimit(){Grade = 5,Limit = 2},
             };
         }
+
+        /// <summary>
+        /// 根据水质类别获取总氮标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetTNLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.2,
+                2 => 0.5,
+                3 => 1,
+                4 => 1.5,
+                5 => 2,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据总氮值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByTNValue(double value)
+        {
+            if (value > 0 && value <= 0.2) return 1;
+            if (value <= 0.5) return 2;
+            if (value <= 1) return 3;
+            if (value <= 1.5) return 4;
+            if (value <= 2) return 5;
+            if (value > 2) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 铜 Cu
 
         /// <summary>
         /// 铜标准限值
@@ -424,6 +464,41 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
+        /// 根据水质类别获取铜标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetCuLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.01,
+                2 => 1,
+                3 => 1,
+                4 => 1,
+                5 => 1,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据铜值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByCuValue(double value)
+        {
+            if (value > 0 && value <= 0.01) return 1;
+            if (value <= 1) return 2;
+            if (value > 1) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 锌 Zn
+
+        /// <summary>
         /// 锌标准限值
         /// </summary>
         /// <returns></returns>
@@ -438,6 +513,42 @@ namespace Journey.EQSFSW.V2002
                 new StandardLimit(){Grade = 5,Limit = 2},
             };
         }
+
+        /// <summary>
+        /// 根据水质类别获取锌标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetZnLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.05,
+                2 => 1,
+                3 => 1,
+                4 => 2,
+                5 => 2,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据锌值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByZnValue(double value)
+        {
+            if (value > 0 && value <= 0.05) return 1;
+            if (value <= 1) return 2;
+            if (value <= 2) return 4;
+            if (value > 2) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 氟化物 F
 
         /// <summary>
         /// 氟化物标准限值
@@ -456,6 +567,41 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
+        /// 根据水质类别获取氟化物标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetFLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 1,
+                2 => 1,
+                3 => 1,
+                4 => 1.5,
+                5 => 1.5,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据氟化物值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByFValue(double value)
+        {
+            if (value > 0 && value <= 1) return 1;
+            if (value <= 1.5) return 4;
+            if (value > 1.5) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 硒 Se
+
+        /// <summary>
         /// 硒标准限值
         /// </summary>
         /// <returns></returns>
@@ -470,6 +616,41 @@ namespace Journey.EQSFSW.V2002
                 new StandardLimit(){Grade = 5,Limit = 0.02},
             };
         }
+
+        /// <summary>
+        /// 根据水质类别获取硒标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetSeLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.01,
+                2 => 0.01,
+                3 => 0.01,
+                4 => 0.02,
+                5 => 0.02,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据硒值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeBySeValue(double value)
+        {
+            if (value > 0 && value <= 0.01) return 1;
+            if (value <= 0.02) return 4;
+            if (value > 0.02) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 砷 As
 
         /// <summary>
         /// 砷标准限值
@@ -488,6 +669,41 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
+        /// 根据水质类别获取砷标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetAsLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.05,
+                2 => 0.05,
+                3 => 0.05,
+                4 => 0.1,
+                5 => 0.1,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据砷值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByAsValue(double value)
+        {
+            if (value > 0 && value <= 0.05) return 1;
+            if (value <= 0.1) return 4;
+            if (value > 0.1) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 汞 Hg
+
+        /// <summary>
         /// 汞标准限值
         /// </summary>
         /// <returns></returns>
@@ -502,6 +718,42 @@ namespace Journey.EQSFSW.V2002
                 new StandardLimit(){Grade = 5,Limit = 0.001},
             };
         }
+
+        /// <summary>
+        /// 根据水质类别获取汞标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetHgLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.00005,
+                2 => 0.00005,
+                3 => 0.0001,
+                4 => 0.001,
+                5 => 0.001,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据汞值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByHgValue(double value)
+        {
+            if (value > 0 && value <= 0.00005) return 1;
+            if (value <= 0.0001) return 3;
+            if (value <= 0.001) return 4;
+            if (value > 0.001) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 镉 Cd
 
         /// <summary>
         /// 镉标准限值
@@ -520,6 +772,42 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
+        /// 根据水质类别获取镉标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetCdLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.001,
+                2 => 0.005,
+                3 => 0.005,
+                4 => 0.005,
+                5 => 0.01,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据镉值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByCdValue(double value)
+        {
+            if (value > 0 && value <= 0.001) return 1;
+            if (value <= 0.005) return 2;
+            if (value <= 0.01) return 5;
+            if (value > 0.01) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 六价铬 Cr6
+
+        /// <summary>
         /// 铬(六价)标准限值
         /// </summary>
         /// <returns></returns>
@@ -534,6 +822,42 @@ namespace Journey.EQSFSW.V2002
                 new StandardLimit(){Grade = 5,Limit = 0.1},
             };
         }
+
+        /// <summary>
+        /// 根据水质类别获取铬(六价)标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetCr6LimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.01,
+                2 => 0.05,
+                3 => 0.05,
+                4 => 0.05,
+                5 => 0.1,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据铬(六价)值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByCr6Value(double value)
+        {
+            if (value > 0 && value <= 0.01) return 1;
+            if (value <= 0.05) return 2;
+            if (value <= 0.1) return 5;
+            if (value > 0.1) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 铅 Pb
 
         /// <summary>
         /// 铅标准限值
@@ -552,6 +876,42 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
+        /// 根据水质类别获取铅标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetPbLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.01,
+                2 => 0.01,
+                3 => 0.05,
+                4 => 0.05,
+                5 => 0.1,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据铅值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByPbValue(double value)
+        {
+            if (value > 0 && value <= 0.01) return 1;
+            if (value <= 0.05) return 3;
+            if (value <= 0.1) return 5;
+            if (value > 0.1) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 氰化物 CN
+
+        /// <summary>
         /// 氰化物标准限值
         /// </summary>
         /// <returns></returns>
@@ -566,6 +926,42 @@ namespace Journey.EQSFSW.V2002
                 new StandardLimit(){Grade = 5,Limit = 0.2},
             };
         }
+
+        /// <summary>
+        /// 根据水质类别获取氰化物标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetCNLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.005,
+                2 => 0.05,
+                3 => 0.2,
+                4 => 0.2,
+                5 => 0.2,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据氰化物值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByCNValue(double value)
+        {
+            if (value > 0 && value <= 0.005) return 1;
+            if (value <= 0.05) return 2;
+            if (value <= 0.2) return 3;
+            if (value > 0.2) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 挥发酚 VolatilePhenol
 
         /// <summary>
         /// 挥发酚标准限值
@@ -584,6 +980,43 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
+        /// 根据水质类别获取挥发酚标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetVolatilePhenolLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.002,
+                2 => 0.002,
+                3 => 0.005,
+                4 => 0.01,
+                5 => 0.1,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据挥发酚值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByVolatilePhenolValue(double value)
+        {
+            if (value > 0 && value <= 0.002) return 1;
+            if (value <= 0.005) return 3;
+            if (value <= 0.01) return 4;
+            if (value <= 0.1) return 5;
+            if (value > 0.1) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 石油类 Oil
+
+        /// <summary>
         /// 石油类标准限值
         /// </summary>
         /// <returns></returns>
@@ -598,6 +1031,42 @@ namespace Journey.EQSFSW.V2002
                 new StandardLimit(){Grade = 5,Limit = 1},
             };
         }
+
+        /// <summary>
+        /// 根据水质类别获取石油类标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetOilLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.05,
+                2 => 0.05,
+                3 => 0.05,
+                4 => 0.5,
+                5 => 1,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据石油类值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByOilValue(double value)
+        {
+            if (value > 0 && value <= 0.05) return 1;
+            if (value <= 0.5) return 4;
+            if (value <= 1) return 5;
+            if (value > 1) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 阴离子表面活性剂 AnionicSurfactant
 
         /// <summary>
         /// 阴离子表面活性剂标准限值
@@ -616,6 +1085,41 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
+        /// 根据水质类别获取阴离子表面活性剂标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetAnionicSurfactantLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.2,
+                2 => 0.2,
+                3 => 0.2,
+                4 => 0.3,
+                5 => 0.3,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据阴离子表面活性剂值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByAnionicSurfactantValue(double value)
+        {
+            if (value > 0 && value <= 0.2) return 1;
+            if (value <= 0.3) return 4;
+            if (value > 0.3) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 硫化物 S2
+
+        /// <summary>
         /// 硫化物标准限值
         /// </summary>
         /// <returns></returns>
@@ -632,6 +1136,44 @@ namespace Journey.EQSFSW.V2002
         }
 
         /// <summary>
+        /// 根据水质类别获取硫化物标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetS2LimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 0.05,
+                2 => 0.1,
+                3 => 0.2,
+                4 => 0.5,
+                5 => 1,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据硫化物值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByS2Value(double value)
+        {
+            if (value > 0 && value <= 0.05) return 1;
+            if (value <= 0.1) return 2;
+            if (value <= 0.2) return 3;
+            if (value <= 0.5) return 4;
+            if (value <= 1) return 5;
+            if (value > 1) return 6;
+            return null;
+        }
+
+        #endregion
+
+        #region 粪大肠菌群 FC
+
+        /// <summary>
         /// 粪大肠菌群标准限值
         /// </summary>
         /// <returns></returns>
@@ -646,11 +1188,56 @@ namespace Journey.EQSFSW.V2002
                 new StandardLimit(){Grade = 5,Limit = 40000},
             };
         }
+
+        /// <summary>
+        /// 根据水质类别获取粪大肠菌群标准限值
+        /// </summary>
+        /// <param name="grade"></param>
+        /// <returns></returns>
+        public static double? GetFCLimitByGrade(int grade)
+        {
+            return grade switch
+            {
+                1 => 200,
+                2 => 2000,
+                3 => 10000,
+                4 => 20000,
+                5 => 40000,
+                _ => null,
+            };
+        }
+
+        /// <summary>
+        /// 根据粪大肠菌群值获取类别
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int? GetGradeByFCValue(double value)
+        {
+            if (value > 0 && value <= 200) return 1;
+            if (value <= 2000) return 2;
+            if (value <= 10000) return 3;
+            if (value <= 20000) return 4;
+            if (value <= 40000) return 5;
+            if (value > 40000) return 6;
+            return null;
+        }
+
+        #endregion
     }
 
+    /// <summary>
+    /// 标准限值类
+    /// </summary>
     public class StandardLimit
     {
+        /// <summary>
+        /// 水质类别
+        /// </summary>
         public int Grade { get; set; }
+        /// <summary>
+        /// 类别标准限值
+        /// </summary>
         public double Limit { get; set; }
     }
 }

@@ -7,6 +7,12 @@
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageIcon>Arrioch-Orbz-Orbz-water.128.png</PackageIcon>
+    <Title>地表水环境质量标准相关方法</Title>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sm1lewc/Journey.EQSFSW.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
