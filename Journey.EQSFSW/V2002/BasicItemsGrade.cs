@@ -557,7 +557,7 @@ namespace Journey.EQSFSW.V2002
         /// </summary>
         /// <param name="grade"></param>
         /// <returns></returns>
-        public int? GradeStrToInt(string grade)
+        public static int? GradeStrToInt(string grade)
         {
             return grade switch
             {
