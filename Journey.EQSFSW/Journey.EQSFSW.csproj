@@ -11,9 +11,10 @@
 		<PackageProjectUrl></PackageProjectUrl>
 		<RepositoryUrl>https://github.com/sm1lewc/Journey.EQSFSW.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<Version>1.0.0.5</Version>
+		<Version>1.0.0.6</Version>
 		<PackageReadmeFile></PackageReadmeFile>
-		<Description>根据地表水环境质量标准 GB 3838 形成的计算方法。提供水质类别标准限值获取、根据类别获取对应的标准限值、根据浓度值获取对应的类别等功能。</Description>
+		<Description>根据地表水环境质量标准 GB 3838 形成的计算方法。提供水质类别标准限值获取、根据类别获取对应的标准限值、根据浓度值获取对应的类别等功能。
+1:Ⅰ类；2:Ⅱ类；3:Ⅲ类；4:Ⅳ类；5:Ⅴ类；6:劣Ⅴ类</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
