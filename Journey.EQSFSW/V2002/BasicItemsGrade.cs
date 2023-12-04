@@ -397,137 +397,414 @@ namespace Journey.EQSFSW.V2002
             return null;
         }
 
+        ///// <summary>
+        ///// 获取整体水质类别
+        ///// </summary>
+        ///// <param name="data"></param>
+        ///// <param name="tpType">1.河流;2.湖库</param>
+        ///// <param name="analysisTN">总氮是否参与计算</param>
+        ///// <param name="analysisFC">粪大肠是否参与计算</param>
+        ///// <returns>(1,Ⅰ)(数字类别,文字类别)</returns>
+        //public static (int, string)? GetWaterGrade(EQSFSW_BasicItem data, int tpType = 1, bool analysisTN = false, bool analysisFC = false)
+        //{
+        //    List<int> grades = new List<int>();
+        //    if (data.PH != null)
+        //    {
+        //        var tmp = GetGradeByPHValue(data.PH.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.DO != null)
+        //    {
+        //        var tmp = GetGradeByDOValue(data.DO.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.CODMn != null)
+        //    {
+        //        var tmp = GetGradeByCODMnValue(data.CODMn.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.COD != null)
+        //    {
+        //        var tmp = GetGradeByCODValue(data.COD.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.BOD5 != null)
+        //    {
+        //        var tmp = GetGradeByBOD5Value(data.BOD5.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.NH3N != null)
+        //    {
+        //        var tmp = GetGradeByNH3NValue(data.NH3N.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.TP != null)
+        //    {
+        //        var tmp = GetGradeByTPValue(data.TP.Value, tpType);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (analysisTN && data.TN != null)
+        //    {
+        //        var tmp = GetGradeByTNValue(data.TN.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.Cu != null)
+        //    {
+        //        var tmp = GetGradeByCuValue(data.Cu.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.Zn != null)
+        //    {
+        //        var tmp = GetGradeByZnValue(data.Zn.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.F != null)
+        //    {
+        //        var tmp = GetGradeByFValue(data.F.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.Se != null)
+        //    {
+        //        var tmp = GetGradeBySeValue(data.Se.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.As != null)
+        //    {
+        //        var tmp = GetGradeByAsValue(data.As.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.Hg != null)
+        //    {
+        //        var tmp = GetGradeByHgValue(data.Hg.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.Cd != null)
+        //    {
+        //        var tmp = GetGradeByCdValue(data.Cd.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.Cr6 != null)
+        //    {
+        //        var tmp = GetGradeByCr6Value(data.Cr6.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.Pb != null)
+        //    {
+        //        var tmp = GetGradeByPbValue(data.Pb.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.CN != null)
+        //    {
+        //        var tmp = GetGradeByCNValue(data.CN.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.VolatilePhenol != null)
+        //    {
+        //        var tmp = GetGradeByVolatilePhenolValue(data.VolatilePhenol.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.Oil != null)
+        //    {
+        //        var tmp = GetGradeByOilValue(data.Oil.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.AnionicSurfactant != null)
+        //    {
+        //        var tmp = GetGradeByAnionicSurfactantValue(data.AnionicSurfactant.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (data.S2 != null)
+        //    {
+        //        var tmp = GetGradeByS2Value(data.S2.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (analysisFC && data.FC != null)
+        //    {
+        //        var tmp = GetGradeByFCValue(data.FC.Value);
+        //        if (tmp != null) grades.Add(tmp.Value.Item1);
+        //    }
+        //    if (grades.Count > 0)
+        //    {
+        //        var max = grades.Max();
+        //        var gradeStr = GradeIntToStr(max) ?? "";
+        //        return (max, gradeStr);
+        //    }
+        //    else return null;
+        //}
+
         /// <summary>
-        /// 获取整体水质类别
+        /// 获取水质类别
         /// </summary>
         /// <param name="data"></param>
-        /// <param name="tpType">1.河流;2.湖库</param>
-        /// <param name="analysisTN">总氮是否参与计算</param>
-        /// <param name="analysisFC">粪大肠是否参与计算</param>
-        /// <returns>(1,Ⅰ)(数字类别,文字类别)</returns>
-        public static (int, string)? GetWaterGrade(EQSFSW_BasicItem data, int tpType = 1, bool analysisTN = false, bool analysisFC = false)
+        /// <param name="tpType"></param>
+        /// <param name="analysisTN"></param>
+        /// <param name="analysisFC"></param>
+        /// <returns></returns>
+        public static EQSFSW_BasicItemsValueAndGrade? GetWaterGrade(EQSFSW_BasicItem data, int tpType = 1, bool analysisTN = false, bool analysisFC = false)
         {
+            var result = new EQSFSW_BasicItemsValueAndGrade();
+            result.WT = data.WT;
+            result.PH = data.PH;
+            result.DO = data.DO;
+            result.CODMn = data.CODMn;
+            result.COD = data.COD;
+            result.BOD5 = data.BOD5;
+            result.NH3N = data.NH3N;
+            result.TP = data.TP;
+            result.TN = data.TN;
+            result.Cu = data.Cu;
+            result.Zn = data.Zn;
+            result.F = data.F;
+            result.Se = data.Se;
+            result.As = data.As;
+            result.Hg = data.Hg;
+            result.Cd = data.Cd;
+            result.Cr6 = data.Cr6;
+            result.Pb = data.Pb;
+            result.CN = data.CN;
+            result.VolatilePhenol = data.VolatilePhenol;
+            result.Oil = data.Oil;
+            result.AnionicSurfactant = data.AnionicSurfactant;
+            result.S2 = data.S2;
+            result.FC = data.FC;
             List<int> grades = new List<int>();
             if (data.PH != null)
             {
                 var tmp = GetGradeByPHValue(data.PH.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.PHGrade = tmp.Value.Item1;
+                    result.PHGradeText = tmp.Value.Item2;
+                }
             }
             if (data.DO != null)
             {
                 var tmp = GetGradeByDOValue(data.DO.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.DOGrade = tmp.Value.Item1;
+                    result.DOGradeText = tmp.Value.Item2;
+                }
             }
             if (data.CODMn != null)
             {
                 var tmp = GetGradeByCODMnValue(data.CODMn.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.CODMnGrade = tmp.Value.Item1;
+                    result.CODMnGradeText = tmp.Value.Item2;
+                }
             }
             if (data.COD != null)
             {
                 var tmp = GetGradeByCODValue(data.COD.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.CODGrade = tmp.Value.Item1;
+                    result.CODGradeText = tmp.Value.Item2;
+                }
             }
             if (data.BOD5 != null)
             {
                 var tmp = GetGradeByBOD5Value(data.BOD5.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.BOD5Grade = tmp.Value.Item1;
+                    result.BOD5GradeText = tmp.Value.Item2;
+                }
             }
             if (data.NH3N != null)
             {
                 var tmp = GetGradeByNH3NValue(data.NH3N.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.NH3NGrade = tmp.Value.Item1;
+                    result.NH3NGradeText = tmp.Value.Item2;
+                }
             }
             if (data.TP != null)
             {
                 var tmp = GetGradeByTPValue(data.TP.Value, tpType);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.TPGrade = tmp.Value.Item1;
+                    result.TPGradeText = tmp.Value.Item2;
+                }
             }
-            if (analysisTN && data.TN != null)
+            if (data.TN != null)
             {
                 var tmp = GetGradeByTNValue(data.TN.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    if (analysisTN) grades.Add(tmp.Value.Item1);
+                    result.TNGrade = tmp.Value.Item1;
+                    result.TNGradeText = tmp.Value.Item2;
+                }
             }
             if (data.Cu != null)
             {
                 var tmp = GetGradeByCuValue(data.Cu.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.CuGrade = tmp.Value.Item1;
+                    result.CuGradeText = tmp.Value.Item2;
+                }
             }
             if (data.Zn != null)
             {
                 var tmp = GetGradeByZnValue(data.Zn.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.ZnGrade = tmp.Value.Item1;
+                    result.ZnGradeText = tmp.Value.Item2;
+                }
             }
             if (data.F != null)
             {
                 var tmp = GetGradeByFValue(data.F.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.FGrade = tmp.Value.Item1;
+                    result.FGradeText = tmp.Value.Item2;
+                }
             }
             if (data.Se != null)
             {
                 var tmp = GetGradeBySeValue(data.Se.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.SeGrade = tmp.Value.Item1;
+                    result.SeGradeText = tmp.Value.Item2;
+                }
             }
             if (data.As != null)
             {
                 var tmp = GetGradeByAsValue(data.As.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.AsGrade = tmp.Value.Item1;
+                    result.AsGradeText = tmp.Value.Item2;
+                }
             }
             if (data.Hg != null)
             {
                 var tmp = GetGradeByHgValue(data.Hg.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.HgGrade = tmp.Value.Item1;
+                    result.HgGradeText = tmp.Value.Item2;
+                }
             }
             if (data.Cd != null)
             {
                 var tmp = GetGradeByCdValue(data.Cd.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.CdGrade = tmp.Value.Item1;
+                    result.CdGradeText = tmp.Value.Item2;
+                }
             }
             if (data.Cr6 != null)
             {
                 var tmp = GetGradeByCr6Value(data.Cr6.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.Cr6Grade = tmp.Value.Item1;
+                    result.Cr6GradeText = tmp.Value.Item2;
+                }
             }
             if (data.Pb != null)
             {
                 var tmp = GetGradeByPbValue(data.Pb.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.PbGrade = tmp.Value.Item1;
+                    result.PbGradeText = tmp.Value.Item2;
+                }
             }
             if (data.CN != null)
             {
                 var tmp = GetGradeByCNValue(data.CN.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.CNGrade = tmp.Value.Item1;
+                    result.CNGradeText = tmp.Value.Item2;
+                }
             }
             if (data.VolatilePhenol != null)
             {
                 var tmp = GetGradeByVolatilePhenolValue(data.VolatilePhenol.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.VolatilePhenolGrade = tmp.Value.Item1;
+                    result.VolatilePhenolGradeText = tmp.Value.Item2;
+                }
             }
             if (data.Oil != null)
             {
                 var tmp = GetGradeByOilValue(data.Oil.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.OilGrade = tmp.Value.Item1;
+                    result.OilGradeText = tmp.Value.Item2;
+                }
             }
             if (data.AnionicSurfactant != null)
             {
                 var tmp = GetGradeByAnionicSurfactantValue(data.AnionicSurfactant.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.AnionicSurfactantGrade = tmp.Value.Item1;
+                    result.AnionicSurfactantGradeText = tmp.Value.Item2;
+                }
             }
             if (data.S2 != null)
             {
                 var tmp = GetGradeByS2Value(data.S2.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    grades.Add(tmp.Value.Item1);
+                    result.S2Grade = tmp.Value.Item1;
+                    result.S2GradeText = tmp.Value.Item2;
+                }
             }
-            if (analysisFC && data.FC != null)
+            if (data.FC != null)
             {
                 var tmp = GetGradeByFCValue(data.FC.Value);
-                if (tmp != null) grades.Add(tmp.Value.Item1);
+                if (tmp != null)
+                {
+                    if (analysisFC) grades.Add(tmp.Value.Item1);
+                    result.FCGrade = tmp.Value.Item1;
+                    result.FCGradeText = tmp.Value.Item2;
+                }
             }
             if (grades.Count > 0)
             {
                 var max = grades.Max();
                 var gradeStr = GradeIntToStr(max) ?? "";
-                return (max, gradeStr);
+                result.WaterGrade = max;
+                result.WaterGradeText = gradeStr;
+                return result;
             }
             else return null;
         }
