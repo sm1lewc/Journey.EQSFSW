@@ -9,6 +9,68 @@ namespace Journey.EQSFSW.V2002
     public class BasicItemsGrade
     {
         /// <summary>
+        /// 根据指标代码和值获取类别
+        /// </summary>
+        /// <param name="factorCode">指标代码, ph或w01001均可</param>
+        /// <param name="value"></param>
+        /// <param name="type">1.河流;2.湖库</param>
+        /// <returns>(1,Ⅰ)(数字类别,文字类别)</returns>
+        public static (int, string)? GetGradeByFactorCode(string factorCode, double value, int type = 1)
+        {
+            return factorCode.ToLower() switch
+            {
+                "ph" => GetGradeByPHValue(value),
+                "do" => GetGradeByDOValue(value),
+                "codmn" => GetGradeByCODMnValue(value),
+                "cod" => GetGradeByCODValue(value),
+                "bod5" => GetGradeByBOD5Value(value),
+                "nh3n" => GetGradeByNH3NValue(value),
+                "tp" => GetGradeByTPValue(value, type),
+                "tn" => GetGradeByTNValue(value),
+                "cu" => GetGradeByCuValue(value),
+                "zn" => GetGradeByZnValue(value),
+                "f" => GetGradeByFValue(value),
+                "se" => GetGradeBySeValue(value),
+                "as" => GetGradeByAsValue(value),
+                "hg" => GetGradeByHgValue(value),
+                "cd" => GetGradeByCdValue(value),
+                "cr6" => GetGradeByCr6Value(value),
+                "pb" => GetGradeByPbValue(value),
+                "cn" => GetGradeByCNValue(value),
+                "volatilephenol" => GetGradeByVolatilePhenolValue(value),
+                "oil" => GetGradeByOilValue(value),
+                "anionicsurfactant" => GetGradeByAnionicSurfactantValue(value),
+                "s2" => GetGradeByS2Value(value),
+                "fc" => GetGradeByFCValue(value),
+                "w01001" => GetGradeByPHValue(value),
+                "w01009" => GetGradeByDOValue(value),
+                "w01019" => GetGradeByCODMnValue(value),
+                "w01018" => GetGradeByCODValue(value),
+                "w01017" => GetGradeByBOD5Value(value),
+                "w21003" => GetGradeByNH3NValue(value),
+                "w21011" => GetGradeByTPValue(value, type),
+                "w21001" => GetGradeByTNValue(value),
+                "w20122" => GetGradeByCuValue(value),
+                "w20123" => GetGradeByZnValue(value),
+                "w21017" => GetGradeByFValue(value),
+                "w20128" => GetGradeBySeValue(value),
+                "w20141" => GetGradeByAsValue(value),
+                "w20111" => GetGradeByHgValue(value),
+                "w20115" => GetGradeByCdValue(value),
+                "w20117" => GetGradeByCr6Value(value),
+                "w20120" => GetGradeByPbValue(value),
+                "w21016" => GetGradeByCNValue(value),
+                "w23002" => GetGradeByVolatilePhenolValue(value),
+                "w22001" => GetGradeByOilValue(value),
+                "w19002" => GetGradeByAnionicSurfactantValue(value),
+                "w21019" => GetGradeByS2Value(value),
+                "w02003" => GetGradeByFCValue(value),
+                _ => null,
+            };
+        }
+
+
+        /// <summary>
         /// 根据PH值获取类别
         /// </summary>
         /// <param name="value"></param>
