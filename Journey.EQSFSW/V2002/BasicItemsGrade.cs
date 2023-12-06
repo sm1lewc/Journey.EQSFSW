@@ -397,140 +397,6 @@ namespace Journey.EQSFSW.V2002
             return null;
         }
 
-        ///// <summary>
-        ///// 获取整体水质类别
-        ///// </summary>
-        ///// <param name="data"></param>
-        ///// <param name="tpType">1.河流;2.湖库</param>
-        ///// <param name="analysisTN">总氮是否参与计算</param>
-        ///// <param name="analysisFC">粪大肠是否参与计算</param>
-        ///// <returns>(1,Ⅰ)(数字类别,文字类别)</returns>
-        //public static (int, string)? GetWaterGrade(EQSFSW_BasicItem data, int tpType = 1, bool analysisTN = false, bool analysisFC = false)
-        //{
-        //    List<int> grades = new List<int>();
-        //    if (data.PH != null)
-        //    {
-        //        var tmp = GetGradeByPHValue(data.PH.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.DO != null)
-        //    {
-        //        var tmp = GetGradeByDOValue(data.DO.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.CODMn != null)
-        //    {
-        //        var tmp = GetGradeByCODMnValue(data.CODMn.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.COD != null)
-        //    {
-        //        var tmp = GetGradeByCODValue(data.COD.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.BOD5 != null)
-        //    {
-        //        var tmp = GetGradeByBOD5Value(data.BOD5.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.NH3N != null)
-        //    {
-        //        var tmp = GetGradeByNH3NValue(data.NH3N.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.TP != null)
-        //    {
-        //        var tmp = GetGradeByTPValue(data.TP.Value, tpType);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (analysisTN && data.TN != null)
-        //    {
-        //        var tmp = GetGradeByTNValue(data.TN.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.Cu != null)
-        //    {
-        //        var tmp = GetGradeByCuValue(data.Cu.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.Zn != null)
-        //    {
-        //        var tmp = GetGradeByZnValue(data.Zn.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.F != null)
-        //    {
-        //        var tmp = GetGradeByFValue(data.F.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.Se != null)
-        //    {
-        //        var tmp = GetGradeBySeValue(data.Se.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.As != null)
-        //    {
-        //        var tmp = GetGradeByAsValue(data.As.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.Hg != null)
-        //    {
-        //        var tmp = GetGradeByHgValue(data.Hg.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.Cd != null)
-        //    {
-        //        var tmp = GetGradeByCdValue(data.Cd.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.Cr6 != null)
-        //    {
-        //        var tmp = GetGradeByCr6Value(data.Cr6.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.Pb != null)
-        //    {
-        //        var tmp = GetGradeByPbValue(data.Pb.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.CN != null)
-        //    {
-        //        var tmp = GetGradeByCNValue(data.CN.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.VolatilePhenol != null)
-        //    {
-        //        var tmp = GetGradeByVolatilePhenolValue(data.VolatilePhenol.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.Oil != null)
-        //    {
-        //        var tmp = GetGradeByOilValue(data.Oil.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.AnionicSurfactant != null)
-        //    {
-        //        var tmp = GetGradeByAnionicSurfactantValue(data.AnionicSurfactant.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (data.S2 != null)
-        //    {
-        //        var tmp = GetGradeByS2Value(data.S2.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (analysisFC && data.FC != null)
-        //    {
-        //        var tmp = GetGradeByFCValue(data.FC.Value);
-        //        if (tmp != null) grades.Add(tmp.Value.Item1);
-        //    }
-        //    if (grades.Count > 0)
-        //    {
-        //        var max = grades.Max();
-        //        var gradeStr = GradeIntToStr(max) ?? "";
-        //        return (max, gradeStr);
-        //    }
-        //    else return null;
-        //}
 
         /// <summary>
         /// 获取水质类别
@@ -542,31 +408,33 @@ namespace Journey.EQSFSW.V2002
         /// <returns></returns>
         public static EQSFSW_BasicItemsValueAndGrade? GetWaterGrade(EQSFSW_BasicItem data, int tpType = 1, bool analysisTN = false, bool analysisFC = false)
         {
-            var result = new EQSFSW_BasicItemsValueAndGrade();
-            result.WT = data.WT;
-            result.PH = data.PH;
-            result.DO = data.DO;
-            result.CODMn = data.CODMn;
-            result.COD = data.COD;
-            result.BOD5 = data.BOD5;
-            result.NH3N = data.NH3N;
-            result.TP = data.TP;
-            result.TN = data.TN;
-            result.Cu = data.Cu;
-            result.Zn = data.Zn;
-            result.F = data.F;
-            result.Se = data.Se;
-            result.As = data.As;
-            result.Hg = data.Hg;
-            result.Cd = data.Cd;
-            result.Cr6 = data.Cr6;
-            result.Pb = data.Pb;
-            result.CN = data.CN;
-            result.VolatilePhenol = data.VolatilePhenol;
-            result.Oil = data.Oil;
-            result.AnionicSurfactant = data.AnionicSurfactant;
-            result.S2 = data.S2;
-            result.FC = data.FC;
+            var result = new EQSFSW_BasicItemsValueAndGrade
+            {
+                WT = data.WT,
+                PH = data.PH,
+                DO = data.DO,
+                CODMn = data.CODMn,
+                COD = data.COD,
+                BOD5 = data.BOD5,
+                NH3N = data.NH3N,
+                TP = data.TP,
+                TN = data.TN,
+                Cu = data.Cu,
+                Zn = data.Zn,
+                F = data.F,
+                Se = data.Se,
+                As = data.As,
+                Hg = data.Hg,
+                Cd = data.Cd,
+                Cr6 = data.Cr6,
+                Pb = data.Pb,
+                CN = data.CN,
+                VolatilePhenol = data.VolatilePhenol,
+                Oil = data.Oil,
+                AnionicSurfactant = data.AnionicSurfactant,
+                S2 = data.S2,
+                FC = data.FC
+            };
             List<int> grades = new List<int>();
             if (data.PH != null)
             {
